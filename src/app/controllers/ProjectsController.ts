@@ -73,11 +73,17 @@ export default class ProjectsController extends Controller {
     @response() res: Response,
     @requestParam('slug') slug: string
   ): Promise<Response> {
-    const project = await this.repo().then((repo: Repository<Project>) =>
+    const projects = await this.repo().then(repo => repo.find())
+    const project = await this.repo().then(repo =>
       repo.findOneOrFail({ slug })
     )
+    const i = projects.findIndex(p => p.id === project.id)
 
-    return res.send(project)
+    return res.send({
+      ...project,
+      previousProject: i > 0  ? projects[i - 1] : null,
+      nextProject: (i + 1) < projects.length ? projects[i + 1] : null
+    })
   }
 
   /**

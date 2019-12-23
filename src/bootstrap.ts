@@ -18,6 +18,7 @@ dotenv.config()
 
 // Register controllers
 import 'app/controllers/ProjectsController'
+import 'app/controllers/TagsController'
 
 // Create the container
 const container = new Container()

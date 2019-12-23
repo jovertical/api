@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm'
 import Model from './Model'
 import ProjectImage from './ProjectImage'
+import Tag from './Tag'
 
 @Entity({ name: 'projects' })
 export default class Project extends Model {
@@ -34,4 +35,8 @@ export default class Project extends Model {
     { eager: true }
   )
   images: ProjectImage[]
+
+  @ManyToMany(type => Tag, { eager: true })
+  @JoinTable()
+  tags: Tag[]
 }

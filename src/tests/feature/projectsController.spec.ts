@@ -8,7 +8,7 @@ import Project from 'app/models/Project'
 import { getRepository, slugify } from 'helpers/utils'
 import { seedProjects, findProject } from 'tests/utils'
 
-describe('Projects', () => {
+describe('Projects Controller', () => {
   beforeAll(async () => {
     cleanUpMetadata()
 

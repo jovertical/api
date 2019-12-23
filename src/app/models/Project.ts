@@ -23,6 +23,9 @@ export default class Project extends Model {
   projectUrl?: string
 
   @Column({ nullable: true })
+  iconUrl?: string
+
+  @Column({ nullable: true })
   featuredAt?: string
 
   @OneToMany(

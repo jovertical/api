@@ -42,6 +42,12 @@ export class ProjectsMigration1570591628052 implements MigrationInterface {
           },
 
           {
+            name: 'iconUrl',
+            type: 'varchar',
+            isNullable: true
+          },
+
+          {
             name: 'startedAt',
             type: 'date'
           },

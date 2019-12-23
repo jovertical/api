@@ -58,6 +58,7 @@ export default class ProjectsController extends Controller {
         startDate: req.body.startDate,
         sourceUrl: req.body.sourceUrl,
         projectUrl: req.body.projectUrl,
+        iconUrl: req.body.iconUrl,
         featuredAt: req.body.featuredAt
       })
     )
@@ -74,15 +75,13 @@ export default class ProjectsController extends Controller {
     @requestParam('slug') slug: string
   ): Promise<Response> {
     const projects = await this.repo().then(repo => repo.find())
-    const project = await this.repo().then(repo =>
-      repo.findOneOrFail({ slug })
-    )
+    const project = await this.repo().then(repo => repo.findOneOrFail({ slug }))
     const i = projects.findIndex(p => p.id === project.id)
 
     return res.send({
       ...project,
-      previousProject: i > 0  ? projects[i - 1] : null,
-      nextProject: (i + 1) < projects.length ? projects[i + 1] : null
+      previousProject: i > 0 ? projects[i - 1] : null,
+      nextProject: i + 1 < projects.length ? projects[i + 1] : null
     })
   }
 
@@ -104,6 +103,7 @@ export default class ProjectsController extends Controller {
         project.startDate = req.body.startDate
         project.sourceUrl = req.body.sourceUrl
         project.projectUrl = req.body.projectUrl
+        project.iconUrl = req.body.iconUrl
         project.featuredAt = req.body.featuredAt
         project.updatedAt = now()
 

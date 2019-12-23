@@ -14,13 +14,30 @@ getRepository(Project)
           "PushFit is the internet's premier video platform for fitness enthusists.",
         startDate: '2019-02-25',
         projectUrl: 'https://pushfit.tv',
+        iconUrl:
+          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/logo.png',
         featuredAt: now(),
         images: await repo.save([
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/1.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/2.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/3.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/4.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/5.png' },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/1.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/2.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/3.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/4.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/5.png'
+          }
         ])
       })
 
@@ -32,10 +49,18 @@ getRepository(Project)
         startDate: '2019-10-02',
         sourceUrl: 'https://github.com/palonponjovertlota/me',
         projectUrl: 'https://jovertpalonpon.me',
+        iconUrl:
+          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/logo.png',
         featuredAt: now(),
         images: await repo.save([
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/1.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/2.png' },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/1.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/2.png'
+          }
         ])
       })
 
@@ -46,9 +71,17 @@ getRepository(Project)
         startDate: '2019-06-16',
         projectUrl: 'https://work-galore.com',
         featuredAt: now(),
+        iconUrl:
+          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/logo.png',
         images: await repo.save([
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/1.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/2.png' },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/1.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/2.png'
+          }
         ])
       })
 
@@ -61,9 +94,18 @@ getRepository(Project)
         projectUrl: 'https://laravel-react-admin.herokuapp.com',
         featuredAt: now(),
         images: await repo.save([
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/1.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/2.png' },
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/3.png' },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/1.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/2.png'
+          },
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/3.png'
+          }
         ])
       })
 
@@ -76,7 +118,10 @@ getRepository(Project)
         sourceUrl: 'https://github.com/palonponjovertlota/caribean-waterpark',
         projectUrl: 'https://caribbean-waterpark.herokuapp.com',
         images: await repo.save([
-          { url: 'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/caribbean-waterpark/1.png' }
+          {
+            url:
+              'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/caribbean-waterpark/1.png'
+          }
         ])
       })
     })

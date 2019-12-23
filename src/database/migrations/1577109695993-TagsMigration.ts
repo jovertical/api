@@ -31,31 +31,9 @@ export class TagsMigration1577109695993 implements MigrationInterface {
         ]
       })
     )
-
-    await queryRunner.createTable(
-      new Table({
-        name: 'project_tag',
-        columns: [
-          {
-            name: 'id',
-            type: 'bigint',
-            isPrimary: true
-          },
-          {
-            name: 'projectId',
-            type: 'bigint'
-          },
-          {
-            name: 'tagId',
-            type: 'bigint'
-          }
-        ]
-      })
-    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.dropTable('tags')
-    await queryRunner.dropTable('project_tag')
   }
 }

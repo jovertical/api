@@ -34,7 +34,9 @@ export default class ProjectsController extends Controller {
 
     if (req.query.hasOwnProperty('tag')) {
       projects = await getRepository(Tag)
-        .then(async repo => repo.findOne({ name: req.query.tag }))
+        .then(async repo =>
+          repo.findOne({ name: req.query.tag }, { relations: ['projects'] })
+        )
         .then((tag: Tag | undefined) => {
           if (tag === undefined) {
             return projects

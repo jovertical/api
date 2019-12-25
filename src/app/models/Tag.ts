@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany } from 'typeorm'
+import { Column, Entity, ManyToMany } from 'typeorm'
 import Model from './Model'
 import Project from './Project'
 
@@ -14,6 +14,5 @@ export default class Tag extends Model {
     type => Project,
     project => project.tags
   )
-  @JoinTable()
-  projects: Promise<Project[]>
+  projects: Project[]
 }

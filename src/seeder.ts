@@ -167,16 +167,7 @@ import { getRepository, now, slugify } from 'helpers/utils'
           'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/caribbean-waterpark/1.png'
       }
     ]),
-    tags: [
-      tags[0],
-      tags[3],
-      tags[5],
-      tags[7],
-      tags[8],
-      tags[9],
-      tags[11],
-      tags[12]
-    ]
+    tags: [tags[0], tags[3], tags[5], tags[8], tags[9], tags[11], tags[12]]
   })
 
   console.log('Finished seeding Projects!')

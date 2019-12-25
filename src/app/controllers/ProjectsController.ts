@@ -9,8 +9,9 @@ import {
   response,
   requestParam
 } from 'inversify-express-utils'
-import { FindManyOptions, Not, Repository, Equal } from 'typeorm'
+import { Repository } from 'typeorm'
 import Project from 'app/models/Project'
+import Tag from 'app/models/Tag'
 import validateMiddleware from 'app/middlewares/validateMiddleware'
 import {
   storeValidation,
@@ -29,15 +30,18 @@ export default class ProjectsController extends Controller {
     @request() req: Request,
     @response() res: Response
   ): Promise<Response> {
-    const options: FindManyOptions = {}
+    let projects = await this.repo().then(r => r.find())
 
-    if (req.query.hasOwnProperty('featured')) {
-      options.where = { featuredAt: Not(Equal('')) }
+    if (req.query.hasOwnProperty('tag')) {
+      projects = await getRepository(Tag)
+        .then(async repo => repo.findOne({ name: req.query.tag }))
+        .then((tag: Tag | undefined) => {
+          if (tag === undefined) {
+            return projects
+          }
+          return tag.projects
+        })
     }
-
-    const projects = await this.repo().then((repo: Repository<Project>) =>
-      repo.find(options)
-    )
 
     return res.send(projects)
   }
@@ -50,7 +54,7 @@ export default class ProjectsController extends Controller {
     @request() req: Request,
     @response() res: Response
   ): Promise<Response> {
-    const project = await this.repo().then((repo: Repository<Project>) =>
+    const project = await this.repo().then(repo =>
       repo.save({
         slug: slugify(req.body.name),
         name: req.body.name,
@@ -94,22 +98,20 @@ export default class ProjectsController extends Controller {
     @response() res: Response,
     @requestParam('slug') slug: string
   ): Promise<Response> {
-    const project = await this.repo().then(
-      async (repo: Repository<Project>) => {
-        const project = await repo.findOneOrFail({ slug })
-        project.slug = slugify(req.body.name)
-        project.name = req.body.name
-        project.description = req.body.description
-        project.startDate = req.body.startDate
-        project.sourceUrl = req.body.sourceUrl
-        project.projectUrl = req.body.projectUrl
-        project.iconUrl = req.body.iconUrl
-        project.featuredAt = req.body.featuredAt
-        project.updatedAt = now()
+    const project = await this.repo().then(async repo => {
+      const project = await repo.findOneOrFail({ slug })
+      project.slug = slugify(req.body.name)
+      project.name = req.body.name
+      project.description = req.body.description
+      project.startDate = req.body.startDate
+      project.sourceUrl = req.body.sourceUrl
+      project.projectUrl = req.body.projectUrl
+      project.iconUrl = req.body.iconUrl
+      project.featuredAt = req.body.featuredAt
+      project.updatedAt = now()
 
-        return this.repo().then(repo => repo.save(project))
-      }
-    )
+      return this.repo().then(repo => repo.save(project))
+    })
 
     return res.send(project)
   }
@@ -122,9 +124,8 @@ export default class ProjectsController extends Controller {
     @response() res: Response,
     @requestParam('slug') slug: string
   ): Promise<Response> {
-    await this.repo().then(async (repo: Repository<Project>) => {
+    await this.repo().then(async repo => {
       const project = await repo.findOneOrFail({ slug })
-
       return repo.remove([project])
     })
 

@@ -36,7 +36,11 @@ export default class Project extends Model {
   )
   images: ProjectImage[]
 
-  @ManyToMany(type => Tag, { eager: true })
+  @ManyToMany(
+    type => Tag,
+    tag => tag.projects,
+    { eager: true }
+  )
   @JoinTable()
   tags: Tag[]
 }

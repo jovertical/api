@@ -5,7 +5,7 @@ import Tag from 'app/models/Tag'
 import { getRepository, now, slugify } from 'helpers/utils'
 
 // This ain't shit
-;(async function() {
+;(async () => {
   console.log('Seeding Tags...')
   const tagRepo: Repository<Tag> = await getRepository(Tag)
 
@@ -38,6 +38,28 @@ import { getRepository, now, slugify } from 'helpers/utils'
     ProjectImage
   )
 
+  const pushfitImages = await projectImageRepo.save([
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/1.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/2.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/3.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/4.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/5.png'
+    }
+  ])
   await projectRepo.save({
     slug: slugify('Pushfit'),
     name: 'Pushfit',
@@ -48,31 +70,21 @@ import { getRepository, now, slugify } from 'helpers/utils'
     iconUrl:
       'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/logo.png',
     featuredAt: now(),
-    images: await projectImageRepo.save([
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/1.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/2.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/3.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/4.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/pushfit/5.png'
-      }
-    ]),
+    images: pushfitImages,
+    image: pushfitImages[0],
     tags: [tags[0], tags[4], tags[5], tags[7], tags[15], tags[16]]
   })
 
+  const myWebsiteImages = await projectImageRepo.save([
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/1.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/2.png'
+    }
+  ])
   await projectRepo.save({
     slug: slugify('My Website'),
     name: 'My Website',
@@ -84,19 +96,21 @@ import { getRepository, now, slugify } from 'helpers/utils'
     iconUrl:
       'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/logo.png',
     featuredAt: now(),
-    images: await projectImageRepo.save([
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/1.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/jovertpalonpon.me/2.png'
-      }
-    ]),
+    images: myWebsiteImages,
+    image: myWebsiteImages[0],
     tags: [tags[0], tags[5], tags[6], tags[7], tags[14]]
   })
 
+  const workgaloreImages = await projectImageRepo.save([
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/1.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/2.png'
+    }
+  ])
   await projectRepo.save({
     slug: slugify('Workgalore'),
     name: 'Workgalore',
@@ -106,19 +120,25 @@ import { getRepository, now, slugify } from 'helpers/utils'
     featuredAt: now(),
     iconUrl:
       'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/logo.png',
-    images: await projectImageRepo.save([
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/1.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/workgalore/2.png'
-      }
-    ]),
+    images: workgaloreImages,
+    image: workgaloreImages[0],
     tags: [tags[0], tags[3], tags[5], tags[6], tags[7], tags[13]]
   })
 
+  const lraImages = await projectImageRepo.save([
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/1.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/2.png'
+    },
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/3.png'
+    }
+  ])
   await projectRepo.save({
     slug: slugify('Laravel React Admin'),
     name: 'Laravel React Admin',
@@ -127,20 +147,8 @@ import { getRepository, now, slugify } from 'helpers/utils'
     sourceUrl: 'https://github.com/palonponjovertlota/laravel-react-admin',
     projectUrl: 'https://laravel-react-admin.herokuapp.com',
     featuredAt: now(),
-    images: await projectImageRepo.save([
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/1.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/2.png'
-      },
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/laravel-react-admin/3.png'
-      }
-    ]),
+    images: lraImages,
+    image: lraImages[0],
     tags: [
       tags[0],
       tags[3],
@@ -153,6 +161,12 @@ import { getRepository, now, slugify } from 'helpers/utils'
     ]
   })
 
+  const cwImages = await projectImageRepo.save([
+    {
+      url:
+        'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/caribbean-waterpark/1.png'
+    }
+  ])
   await projectRepo.save({
     slug: slugify('Caribbean Waterpark'),
     name: 'Caribbean Waterpark',
@@ -161,12 +175,8 @@ import { getRepository, now, slugify } from 'helpers/utils'
     startDate: '2018-01-22',
     sourceUrl: 'https://github.com/palonponjovertlota/caribean-waterpark',
     projectUrl: 'https://caribbean-waterpark.herokuapp.com',
-    images: await projectImageRepo.save([
-      {
-        url:
-          'https://s3-ap-southeast-1.amazonaws.com/jovertpalonpon.me/projects/caribbean-waterpark/1.png'
-      }
-    ]),
+    images: cwImages,
+    image: cwImages[0],
     tags: [tags[0], tags[3], tags[5], tags[8], tags[9], tags[11], tags[12]]
   })
 

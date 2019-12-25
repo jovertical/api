@@ -1,4 +1,12 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm'
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  OneToOne
+} from 'typeorm'
 import Model from './Model'
 import ProjectImage from './ProjectImage'
 import Tag from './Tag'
@@ -28,6 +36,10 @@ export default class Project extends Model {
 
   @Column({ nullable: true })
   featuredAt?: string
+
+  @OneToOne(type => ProjectImage, { eager: true })
+  @JoinColumn()
+  image?: ProjectImage
 
   @OneToMany(
     type => ProjectImage,

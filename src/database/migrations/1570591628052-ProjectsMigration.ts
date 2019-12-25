@@ -14,6 +14,12 @@ export class ProjectsMigration1570591628052 implements MigrationInterface {
           },
 
           {
+            name: 'projectImageId',
+            type: 'bigint',
+            isNullable: true
+          },
+
+          {
             name: 'slug',
             type: 'varchar'
           },

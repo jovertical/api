@@ -12,12 +12,10 @@ export class ProjectImagesMigration1576441753649 implements MigrationInterface {
             type: 'bigint',
             isPrimary: true
           },
-
           {
             name: 'projectId',
             type: 'bigint'
           },
-
           {
             name: 'url',
             type: 'varchar'

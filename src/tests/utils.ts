@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm'
 import Project from 'app/models/Project'
 import Tag from 'app/models/Tag'
-import { getRepository, now, slugify } from 'helpers/utils'
+import { getRepository, slugify } from 'helpers/utils'
 
 /**
  * Seed sample tags
@@ -21,8 +21,7 @@ export const seedProjects = (): Promise<any> => {
       {
         slug: slugify('Workgalore'),
         name: 'Workgalore',
-        startDate: '2019-06-16',
-        featuredAt: now()
+        startDate: '2019-06-16'
       },
       {
         slug: slugify('Caribbean Waterpark'),
@@ -39,9 +38,9 @@ export const seedProjects = (): Promise<any> => {
  * @param id The key of the model
  */
 export const findTag = (id = undefined): Promise<Tag> => {
-  return getRepository(Tag).then((repo: Repository<Tag>) => {
-    return repo.findOneOrFail(id)
-  })
+  return getRepository(Tag).then((repo: Repository<Tag>) =>
+    repo.findOneOrFail(id)
+  )
 }
 
 /**
@@ -50,7 +49,7 @@ export const findTag = (id = undefined): Promise<Tag> => {
  * @param id The key of the model
  */
 export const findProject = (id = undefined): Promise<Project> => {
-  return getRepository(Project).then((repo: Repository<Project>) => {
-    return repo.findOneOrFail(id)
-  })
+  return getRepository(Project).then((repo: Repository<Project>) =>
+    repo.findOneOrFail(id)
+  )
 }

@@ -19,9 +19,9 @@ describe('Projects Controller', () => {
     await request(app)
       .get('/projects')
       .expect(200)
-      .then(response => {
-        expect(response.body).toHaveLength(2)
-        expect(response.body).toContainEqual(
+      .then(res => {
+        expect(res.body).toHaveLength(2)
+        expect(res.body).toContainEqual(
           expect.objectContaining({ name: 'Caribbean Waterpark' })
         )
       })
@@ -40,8 +40,8 @@ describe('Projects Controller', () => {
       .post('/projects')
       .send(attributes)
       .expect(201)
-      .then(response => {
-        expect(response.body).toMatchObject(attributes)
+      .then(res => {
+        expect(res.body).toMatchObject(attributes)
       })
 
     await getRepository(Project)
@@ -60,8 +60,8 @@ describe('Projects Controller', () => {
       .get(`/projects/${project.slug}`)
       .send(project)
       .expect(200)
-      .then(response => {
-        expect(response.body).toMatchObject(project)
+      .then(res => {
+        expect(res.body.name).toContain(project.name)
       })
   })
 
@@ -81,8 +81,8 @@ describe('Projects Controller', () => {
       .patch(`/projects/${project.slug}`)
       .send(attributes)
       .expect(200)
-      .then(response => {
-        expect(response.body).toMatchObject(attributes)
+      .then(res => {
+        expect(res.body).toMatchObject(attributes)
       })
 
     await getRepository(Project)

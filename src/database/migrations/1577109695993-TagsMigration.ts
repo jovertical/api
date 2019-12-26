@@ -22,11 +22,11 @@ export class TagsMigration1577109695993 implements MigrationInterface {
           },
           {
             name: 'createdAt',
-            type: 'timestamp without time zone'
+            type: 'timestamp'
           },
           {
             name: 'updatedAt',
-            type: 'timestamp without time zone'
+            type: 'timestamp'
           }
         ]
       })

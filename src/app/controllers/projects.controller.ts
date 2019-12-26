@@ -5,6 +5,7 @@ import {
   httpPost,
   httpPatch,
   httpDelete,
+  interfaces,
   request,
   response,
   requestParam
@@ -12,16 +13,12 @@ import {
 import { Repository } from 'typeorm'
 import Project from 'app/models/Project'
 import Tag from 'app/models/Tag'
-import validateMiddleware from 'app/middlewares/validateMiddleware'
-import {
-  storeValidation,
-  updateValidation
-} from 'app/validations/projectsValidation'
+import validate from 'app/middlewares/validate.middleware'
 import { getRepository, slugify } from 'helpers/utils'
-import Controller from './Controller'
+import { storeValidation, updateValidation } from './projects.validation'
 
 @controller('/projects')
-export default class ProjectsController extends Controller {
+export default class ProjectsController implements interfaces.Controller {
   /**
    * Get a list of Project
    */
@@ -51,7 +48,7 @@ export default class ProjectsController extends Controller {
   /**
    * Create a Project
    */
-  @httpPost('/', validateMiddleware(storeValidation))
+  @httpPost('/', validate(storeValidation))
   public async store(
     @request() req: Request,
     @response() res: Response
@@ -93,7 +90,7 @@ export default class ProjectsController extends Controller {
   /**
    * Update a Project
    */
-  @httpPatch('/:slug', validateMiddleware(updateValidation))
+  @httpPatch('/:slug', validate(updateValidation))
   public async update(
     @request() req: Request,
     @response() res: Response,

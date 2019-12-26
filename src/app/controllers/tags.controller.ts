@@ -5,19 +5,19 @@ import {
   httpPost,
   httpPatch,
   httpDelete,
+  interfaces,
   request,
   response,
   requestParam
 } from 'inversify-express-utils'
 import { Repository } from 'typeorm'
-import validateMiddleware from 'app/middlewares/validateMiddleware'
+import validate from 'app/middlewares/validate.middleware'
 import Tag from 'app/models/Tag'
-import { storeValidation } from 'app/validations/tagsValidation'
 import { getRepository } from 'helpers/utils'
-import Controller from './Controller'
+import { storeValidation, updateValidation } from './tags.validation'
 
 @controller('/tags')
-export default class TagsController extends Controller {
+export default class TagsController implements interfaces.Controller {
   /**
    * Get a list of Tag
    */
@@ -31,7 +31,7 @@ export default class TagsController extends Controller {
   /**
    * Create a Tag
    */
-  @httpPost('/', validateMiddleware(storeValidation))
+  @httpPost('/', validate(storeValidation))
   public async store(@request() req: Request, @response() res: Response) {
     const tag = await this.repo().then(repo =>
       repo.save({
@@ -58,7 +58,7 @@ export default class TagsController extends Controller {
   /**
    * Update the Tag
    */
-  @httpPatch('/:name')
+  @httpPatch('/:name', validate(updateValidation))
   public async update(
     @request() req: Request,
     @requestParam('name') name: string,

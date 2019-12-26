@@ -17,7 +17,7 @@ import {
   storeValidation,
   updateValidation
 } from 'app/validations/projectsValidation'
-import { getRepository, now, slugify } from 'helpers/utils'
+import { getRepository, slugify } from 'helpers/utils'
 import Controller from './Controller'
 
 @controller('/projects')
@@ -64,8 +64,7 @@ export default class ProjectsController extends Controller {
         startDate: req.body.startDate,
         sourceUrl: req.body.sourceUrl,
         projectUrl: req.body.projectUrl,
-        iconUrl: req.body.iconUrl,
-        featuredAt: req.body.featuredAt
+        iconUrl: req.body.iconUrl
       })
     )
 
@@ -109,8 +108,6 @@ export default class ProjectsController extends Controller {
       project.sourceUrl = req.body.sourceUrl
       project.projectUrl = req.body.projectUrl
       project.iconUrl = req.body.iconUrl
-      project.featuredAt = req.body.featuredAt
-      project.updatedAt = now()
 
       return this.repo().then(repo => repo.save(project))
     })

@@ -34,9 +34,6 @@ export default class Project extends Model {
   @Column({ nullable: true })
   iconUrl?: string
 
-  @Column({ nullable: true })
-  featuredAt?: string
-
   @OneToOne(type => ProjectImage, { eager: true })
   @JoinColumn()
   image?: ProjectImage

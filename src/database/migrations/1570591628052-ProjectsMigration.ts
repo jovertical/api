@@ -12,66 +12,50 @@ export class ProjectsMigration1570591628052 implements MigrationInterface {
             type: 'bigint',
             isPrimary: true
           },
-
           {
             name: 'projectImageId',
             type: 'bigint',
             isNullable: true
           },
-
           {
             name: 'slug',
             type: 'varchar'
           },
-
           {
             name: 'name',
             type: 'varchar'
           },
-
           {
             name: 'description',
             type: 'text',
             isNullable: true
           },
-
           {
             name: 'sourceUrl',
             type: 'varchar',
             isNullable: true
           },
-
           {
             name: 'projectUrl',
             type: 'varchar',
             isNullable: true
           },
-
           {
             name: 'iconUrl',
             type: 'varchar',
             isNullable: true
           },
-
           {
             name: 'startedAt',
             type: 'date'
           },
-
-          {
-            name: 'featuredAt',
-            type: 'timestamp without time zone',
-            isNullable: true
-          },
-
           {
             name: 'createdAt',
-            type: 'timestamp without time zone'
+            type: 'timestamp'
           },
-
           {
             name: 'updatedAt',
-            type: 'timestamp without time zone'
+            type: 'timestamp'
           }
         ]
       }),

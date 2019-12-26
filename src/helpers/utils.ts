@@ -51,5 +51,5 @@ export const getRepository = (model: any): Promise<Repository<any>> => {
  * Gives the current time
  */
 export const now = (): string => {
-  return moment().format('YYYY-MM-DD hh:mm:ss')
+  return moment().format()
 }

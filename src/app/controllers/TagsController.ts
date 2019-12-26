@@ -13,7 +13,7 @@ import { Repository } from 'typeorm'
 import validateMiddleware from 'app/middlewares/validateMiddleware'
 import Tag from 'app/models/Tag'
 import { storeValidation } from 'app/validations/tagsValidation'
-import { getRepository, now } from 'helpers/utils'
+import { getRepository } from 'helpers/utils'
 import Controller from './Controller'
 
 @controller('/tags')
@@ -68,7 +68,6 @@ export default class TagsController extends Controller {
       const tag = await repo.findOneOrFail({ name })
       tag.name = req.body.name
       tag.description = req.body.description
-      tag.updatedAt = now()
       return this.repo().then(repo => repo.save(tag))
     })
 

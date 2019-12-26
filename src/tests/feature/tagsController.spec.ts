@@ -53,7 +53,7 @@ describe('Tags Controller', () => {
       .send(tag)
       .expect(200)
       .then(res => {
-        expect(res.body).toMatchObject(tag)
+        expect(res.body.name).toContain(tag.name)
       })
   })
 

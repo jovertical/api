@@ -1,13 +1,16 @@
-import { PrimaryGeneratedColumn, Column } from 'typeorm'
-import { now } from 'helpers/utils'
+import {
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn
+} from 'typeorm'
 
 export default class Model {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @Column({ default: now() })
-  createdAt?: string
+  @CreateDateColumn()
+  createdAt: string
 
-  @Column({ default: now() })
-  updatedAt?: string
+  @UpdateDateColumn()
+  updatedAt: string
 }
